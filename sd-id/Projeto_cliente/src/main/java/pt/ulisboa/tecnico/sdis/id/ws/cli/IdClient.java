@@ -14,7 +14,7 @@ public class IdClient {
 	
 	private SDId SdId; 
     private Scanner keyboardSc;
-    private String menuOptions = "1 - Create User\n 2 - Renew Password\n 3 - Remove User\n 4 - Authentication\n 5 - Exit\n";
+    private String menuOptions = " 1 - Create User\n 2 - Renew Password\n 3 - Remove User\n 4 - Authentication\n 5 - Exit\n";
 
     
     public IdClient(SDId port){

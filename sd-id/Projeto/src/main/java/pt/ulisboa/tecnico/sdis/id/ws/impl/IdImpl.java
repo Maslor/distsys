@@ -30,14 +30,14 @@ public class IdImpl implements SDId {
 			if (partsSize != 2){
 				InvalidEmail invalidEmailAddress = new InvalidEmail();
 				invalidEmailAddress.setEmailAddress(emailAddress);
-				throw new InvalidEmail_Exception("Invalid Email, format is a@b", invalidEmailAddress);
+				throw new InvalidEmail_Exception("Invalid Email, format is a@b\n", invalidEmailAddress);
 				
 			}
 		
 		}else{
 			InvalidEmail invalidEmailAddress = new InvalidEmail();
 			invalidEmailAddress.setEmailAddress(emailAddress);
-			throw new InvalidEmail_Exception("Invalid Email, format is a@b", invalidEmailAddress);
+			throw new InvalidEmail_Exception("Invalid Email, format is a@b\n", invalidEmailAddress);
 
 		}
 		
@@ -46,16 +46,16 @@ public class IdImpl implements SDId {
 		
 		/*check if the user or email already exist*/
 		for (CreateUser users:registedUsers.keySet()){
-			if(users.getUserId() == userId || users.getEmailAddress() == emailAddress){
-				if(users.getUserId() == userId){
+			if(users.getUserId().equals(userId) || users.getEmailAddress().equals(emailAddress)){
+				if(users.getUserId().equals(userId)){
 					UserAlreadyExists alreadyExistsUser = new UserAlreadyExists();
 					alreadyExistsUser.setUserId(userId);
-					throw new UserAlreadyExists_Exception("User already exists", alreadyExistsUser);
+					throw new UserAlreadyExists_Exception("User already exists\n", alreadyExistsUser);
 				}else{
-					if(users.getEmailAddress() == emailAddress){
+					if(users.getEmailAddress().equals(emailAddress)){
 						EmailAlreadyExists alreadyExistsEmail = new EmailAlreadyExists();
 						alreadyExistsEmail.setEmailAddress(emailAddress);
-						throw new EmailAlreadyExists_Exception("Email already exists", alreadyExistsEmail);
+						throw new EmailAlreadyExists_Exception("Email already exists\n", alreadyExistsEmail);
 					}
 				}
 			}
@@ -71,38 +71,42 @@ public class IdImpl implements SDId {
 		String newUserPass = newPass.getPassword();
 		/*registers the user in the server data*/
 		registedUsers.put(newUser, newUserPass);
+		System.out.printf("The password for the user %s is %s\n", userId, newUserPass);
 	}
 
 	public void renewPassword(String userId) throws UserDoesNotExist_Exception {
 		// TODO Auto-generated method stub
 		/*checks if the user exists*/
 		for (CreateUser users:registedUsers.keySet()){
-			if(users.getUserId()==userId){
+			if(users.getUserId().equals(userId)){
 				PassGenerator newPass = new PassGenerator();
 				newPass.setPassword();
 				String userNewPass = newPass.getPassword();
 				registedUsers.put(users, userNewPass);
-			}else{
-				UserDoesNotExist nonexistantUser = new UserDoesNotExist();
-				nonexistantUser.setUserId(userId);
-				throw new UserDoesNotExist_Exception("User does not exist", nonexistantUser);
+				System.out.printf("The new password is for the user %s is %s.\n", userId, userNewPass);
+				return;
 			}
 		}
 		
+		/*if the user doesnt exist, throws exception*/
+		UserDoesNotExist nonexistantUser = new UserDoesNotExist();
+		nonexistantUser.setUserId(userId);
+		throw new UserDoesNotExist_Exception("User does not exist\n", nonexistantUser);
 	}
 
 	public void removeUser(String userId) throws UserDoesNotExist_Exception {
 		// TODO Auto-generated method stub
 		for(CreateUser users:registedUsers.keySet()){
-			if(users.getUserId() == userId){
+			if(users.getUserId().equals(userId)){
 				registedUsers.remove(users);
-			}else{
-				UserDoesNotExist nonexistantUser = new UserDoesNotExist();
-				nonexistantUser.setUserId(userId);
-				throw new UserDoesNotExist_Exception("User does not exist", nonexistantUser);
+				return;	
 			}
 		}
 		
+		/*if the user doesnt exist, throws exception*/
+		UserDoesNotExist nonexistantUser = new UserDoesNotExist();
+		nonexistantUser.setUserId(userId);
+		throw new UserDoesNotExist_Exception("User does not exist\n", nonexistantUser);
 	}
 
 	public byte[] requestAuthentication(String userId, byte[] reserved)
