@@ -146,7 +146,6 @@ public class IdClient {
       //  String result = port.sayHello("friend");
       //  System.out.println(result);
         IdClient id = new IdClient(port);
-        System.out.printf("piretes pójaiters\n");
         id.manageUsers();
     }
 
