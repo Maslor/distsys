@@ -86,6 +86,13 @@
       <version>2.2.10</version>
       <scope>compile</scope>
     </dependency>
+    <!-- JUnit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <properties>

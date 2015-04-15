@@ -85,6 +85,13 @@
       <artifactId>jaxws-rt</artifactId>
       <version>2.2.10</version>
     </dependency>
+    <!-- JUnit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   
   <properties>
@@ -148,7 +155,7 @@
           <programs>
             <program>
               <mainClass>${mainclass}</mainClass>
-              <id>hello-ws</id>
+              <id>id-ws</id>
             </program>
           </programs>
         </configuration>
