@@ -43,6 +43,11 @@ public class IdImpl implements SDId {
 		
 		
 		/*check if the user is valid*/
+		if(userId.equals(" ") || userId.equals("")){
+			InvalidUser invalidUser = new InvalidUser();
+			invalidUser.setUserId(userId);
+			throw new InvalidUser_Exception("Invalid user, user must not contain spaces or be empty", invalidUser);
+		}
 		
 		/*check if the user or email already exist*/
 		for (CreateUser users:registedUsers.keySet()){
@@ -112,7 +117,26 @@ public class IdImpl implements SDId {
 	public byte[] requestAuthentication(String userId, byte[] reserved)
 			throws AuthReqFailed_Exception {
 		// TODO Auto-generated method stub
-		return null;
+		byte[] authSuccess = {1};
+		String userPass = new String(reserved);
+		for(CreateUser users:registedUsers.keySet()){
+			if (users.getUserId().equals(userId)){
+				if((registedUsers.get(users)).equals(userPass)){
+					System.out.printf("Authentication Successful\n");
+					return authSuccess;
+				}else{
+					AuthReqFailed authFailed = new AuthReqFailed();
+					authFailed.setReserved(reserved);
+					throw new AuthReqFailed_Exception("Incorrect password\n", authFailed);
+				}
+			}
+		
+		}
+		
+		AuthReqFailed authFailed = new AuthReqFailed();
+		authFailed.setReserved(reserved);
+		throw new AuthReqFailed_Exception("User does not exist\n", authFailed);
+		
 	}
 
 }

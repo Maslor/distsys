@@ -36,20 +36,23 @@ public class IdClient {
     }
     
     public String readArgumentUser(){
-    	String argument = "";
-    	do {
-            System.out.printf("Choose a username: ");
-            argument = keyboardSc.next();
-        } while (argument == "");
+    	String argument = " ";
+        System.out.printf("Choose a username: ");
+        argument = keyboardSc.next();
         return argument;
     }
     
     public String readArgumentEmail(){
     	String argument = "";
-    	do {
-            System.out.printf("Choose a email address: ");
-            argument = keyboardSc.next();
-        } while (argument == "");
+        System.out.printf("Choose a email address: ");
+        argument = keyboardSc.next();
+        return argument;
+    }
+    
+    public String readPassword(){
+    	String argument = "";
+        System.out.printf("Write password: ");
+        argument = keyboardSc.next();
         return argument;
     }
     
@@ -57,6 +60,7 @@ public class IdClient {
     	int option;
     	String userId;
     	String emailAddress;
+    	String pass;
     	while(true){
         	System.out.printf("%s", getMenuOptions());
     		option = readOption();
@@ -68,16 +72,16 @@ public class IdClient {
 							SdId.createUser(userId, emailAddress);
 						} catch (EmailAlreadyExists_Exception e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							System.out.printf(e.getMessage());
 						} catch (InvalidEmail_Exception e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							System.out.printf(e.getMessage());
 						} catch (InvalidUser_Exception e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							System.out.printf(e.getMessage());
 						} catch (UserAlreadyExists_Exception e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							System.out.printf(e.getMessage());
 						}
     					break;
     			
@@ -86,7 +90,7 @@ public class IdClient {
 							SdId.renewPassword(userId);
 						} catch (UserDoesNotExist_Exception e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							System.out.printf(e.getMessage());
 						}
 						break;
 				
@@ -95,12 +99,19 @@ public class IdClient {
 							SdId.removeUser(userId);
 						} catch (UserDoesNotExist_Exception e) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							System.out.printf(e.getMessage());
 						}
 						break;
 						
     			case 4: userId = readArgumentUser();
-    					//SdId.requestAuthentication(userId, [1]);
+    					pass = readPassword();
+    					byte[] password = pass.getBytes();
+						try {
+							SdId.requestAuthentication(userId, password);
+						} catch (AuthReqFailed_Exception e) {
+							// TODO Auto-generated catch block
+							System.out.printf(e.getMessage());
+						}
     					break;
     			
     			case 5:	return;
@@ -142,9 +153,7 @@ public class IdClient {
         Map<String, Object> requestContext = bindingProvider.getRequestContext();
         requestContext.put(ENDPOINT_ADDRESS_PROPERTY, endpointAddress);
 
-       // System.out.println("Remote call ...");
-      //  String result = port.sayHello("friend");
-      //  System.out.println(result);
+       
         IdClient id = new IdClient(port);
         id.manageUsers();
     }

@@ -2,6 +2,9 @@ package pt.ulisboa.tecnico.sdis.id.ws.impl;
 
 import java.util.UUID;
 
+/*random alphanumeric password generator.
+ * algorithm found in http://stackoverflow.com/questions/18069434/generating-alphanumeric-random-string-in-java
+ */
 public class PassGenerator {
 	
 	private String password;
