@@ -36,9 +36,9 @@ To generate launch scripts for Windows and Linux:
 
 To run using appassembler plugin:
   On Windows:
-    target\appassembler\bin\hello-ws-cli.bat http://localhost:8081 Hello
+    target\appassembler\bin\id-ws-cli.bat http://localhost:8081 Hello
   On Linux:
-    ./target/appassembler/bin/hello-ws-cli http://localhost:8081 Hello
+    ./target/appassembler/bin/id-ws-cli http://localhost:8081 Hello
 
 
 To configure the project in Eclipse:
@@ -60,5 +60,4 @@ To run:
 
 
 --
-Revision date: 2015-03-12
-leic-sod@disciplinas.tecnico.ulisboa.pt
+Revision date: 2015-04-15
