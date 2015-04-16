@@ -27,7 +27,7 @@ public class CreateUserTest {
 
 
     // members
-    private CreateUser user1, user2, user3, user4, user5;
+    private CreateUser user1, user2;
 
     // initialization and clean-up for each test
 
@@ -36,9 +36,6 @@ public class CreateUserTest {
     	
     	user1 = new CreateUser();
     	user2 = new CreateUser();
-    	user3 = new CreateUser();
-    	user4 = new CreateUser();
-    	user5 = new CreateUser();
     	
     }
 
@@ -47,10 +44,7 @@ public class CreateUserTest {
     	
     	user1 = null;
     	user2 = null;
-    	user3 = null;
-    	user4 = null;
-    	user5 = null;
-    	
+    
     }
 
 
@@ -68,16 +62,16 @@ public class CreateUserTest {
     }
     
     @Test(expected = InvalidEmail_Exception.class)
-    public void testSetEmailAddress1() {
+    public void testSetInvalidEmailString() {
     	user1.setEmailAddress("aloalo");
     }
     @Test(expected = InvalidEmail_Exception.class)
-    public void testSetEmailAddress2() {
+    public void testSetInvalidEmailName() {
     	user1.setEmailAddress("@aloalo");
     }
     
     @Test(expected = InvalidEmail_Exception.class)
-    public void testSetEmailAddress3() {
+    public void testSetInvalidEmailServer() {
     	user1.setEmailAddress("aloalo@");
     }
     
@@ -97,15 +91,16 @@ public class CreateUserTest {
     
     @Test(expected = EmailAlreadyExists_Exception.class)
     public void testSameAddress() {
-    	user2.setEmailAddress("alice@tecnico.ulisboa.pt");
+    	final String address = "alice@tecnico.ulisboa.pt";
+    	user1.setEmailAddress(address);
+    	user2.setEmailAddress(address);
     }
     
     @Test(expected = UserAlreadyExists_Exception.class)
     public void testSameUserId() {
-    	user2.setUserId("alice");
+    	final String id = "alice";
+    	user1.setUserId(id);
+    	user2.setUserId(id);
     }
-    
-}
-    
     
 }
