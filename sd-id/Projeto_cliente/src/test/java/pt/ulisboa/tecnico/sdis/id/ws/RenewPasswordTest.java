@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sdis.id.ws.test;
+package pt.ulisboa.tecnico.sdis.id.ws;
 
 import org.junit.*;
 import static org.junit.Assert.*;
