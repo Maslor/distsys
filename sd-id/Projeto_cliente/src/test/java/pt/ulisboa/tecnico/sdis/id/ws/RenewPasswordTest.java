@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sdis.id.ws;
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 /**
@@ -25,27 +26,28 @@ public class RenewPasswordTest {
 
 
     // members
-
+   
+    private RenewPassword rp;
 
     // initialization and clean-up for each test
 
     @Before
     public void setUp() {
-    	
+    	rp = new RenewPassword();
     }
 
     @After
     public void tearDown() {
+    	rp = null;
     }
 
 
     // tests
-
-    @Test
-    public void test() {
-
-        // assertEquals(expected, actual);
-        // if the assert fails, the test fails
+    
+    @Test(expected = UserDoesNotExist_Exception.class)
+    public void testRemoveNonExisting() {
+    	final String id = "carla";
+    	rp.setUserId(id);
     }
 
 }
