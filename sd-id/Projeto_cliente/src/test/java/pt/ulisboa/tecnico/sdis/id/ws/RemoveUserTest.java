@@ -34,12 +34,14 @@ public class RemoveUserTest {
     public void setUp() {
     	remove1 = new RemoveUser();
     	remove2 = new RemoveUser();
+    	user1 = new CreateUser();
     }
 
     @After
     public void tearDown() {
     	remove1 = null;
     	remove2 = null;
+    	user1 = null;
     }
 
 
