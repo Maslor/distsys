@@ -9,3 +9,8 @@ mvn clean -> cleans the generated sources
 mvn generate-sources -> generates sources according to the wsdl
 mvn package -> compiles everything and packages it
 mvn exec:java -Dexec.args="arg1 arg2 arg3" -> Executes the main java file. the -Dexec flag is optional, only use it to specify the uddiurl, wsname and wsurl; otherwise it will run the default values.
+
+[EDIT] Right now, if you don't specify the arguments, here are the default ones:
+        ws.url = "http://localhost:8080/id-ws/endpoint"
+        ws.name = "SDId"
+        uddi.url = "http://localhost:8081"
