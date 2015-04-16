@@ -81,5 +81,31 @@ public class CreateUserTest {
     	user1.setEmailAddress("aloalo@");
     }
     
+    @Test
+    public void testGetId() {
+    	final String id = "alice";
+    	user1.setUserId(id);
+    	assertEquals("alice",user1.getUserId());
+    }
+    
+    @Test
+    public void testGetAddress() {
+    	final String address = "alice@tecnico.ulisboa.pt";
+    	user1.setEmailAddress(address);
+    	assertEquals("alice@tecnico.ulisboa.pt",user1.getEmailAddress());
+    }
+    
+    @Test(expected = EmailAlreadyExists_Exception.class)
+    public void testSameAddress() {
+    	user2.setEmailAddress("alice@tecnico.ulisboa.pt");
+    }
+    
+    @Test(expected = UserAlreadyExists_Exception.class)
+    public void testSameUserId() {
+    	user2.setUserId("alice");
+    }
+    
+}
+    
     
 }
