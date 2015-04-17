@@ -30,8 +30,13 @@ public class IdImpl implements SDId {
 			if (partsSize != 2){
 				InvalidEmail invalidEmailAddress = new InvalidEmail();
 				invalidEmailAddress.setEmailAddress(emailAddress);
+				throw new InvalidEmail_Exception("Invalid Email, format is a@b\n", invalidEmailAddress);	
+			}
+			
+			if (emailParts[0].equals("")) {
+				InvalidEmail invalidEmailAddress = new InvalidEmail();
+				invalidEmailAddress.setEmailAddress(emailAddress);
 				throw new InvalidEmail_Exception("Invalid Email, format is a@b\n", invalidEmailAddress);
-				
 			}
 		
 		}else{
