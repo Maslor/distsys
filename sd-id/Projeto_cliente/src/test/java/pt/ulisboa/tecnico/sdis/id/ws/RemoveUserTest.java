@@ -61,7 +61,7 @@ public class RemoveUserTest {
     
     @Test(expected = UserDoesNotExist_Exception.class)
     public void testRemoveNonExisting() throws UserDoesNotExist_Exception {
-    	port.removeUser(user);
+    	port.removeUser("lolollolo");
     }
 
 }
