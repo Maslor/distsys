@@ -50,7 +50,7 @@ public class RequestAuthenticationTest {
 
     // tests
 
-    @Test
+   /* @Test
     public void testGetReserved() {
     	
     	
@@ -78,7 +78,7 @@ public class RequestAuthenticationTest {
     	
     	assertEquals(id,ra.getUserId());
     	
-    }
+    }*/
     
     @Test(expected = AuthReqFailed_Exception.class)
     public void testReqAuthNonExisting() throws AuthReqFailed_Exception {
