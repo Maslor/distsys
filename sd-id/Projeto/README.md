@@ -1,4 +1,4 @@
-# Distributed Sistems Projecto #
+# Distributed Sistems Project #
 
 ## First Part ##
 
