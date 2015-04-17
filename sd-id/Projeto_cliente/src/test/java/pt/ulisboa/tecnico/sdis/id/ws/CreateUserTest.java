@@ -11,18 +11,23 @@ import static org.junit.Assert.*;
 public class CreateUserTest {
 
     // static members
-
+	
+	private static SDId port;
+	private static String user = "duarte";
+	private static String address = "alice@tecnico.ulisboa.pt";
 
     // one-time initialization and clean-up
 
     @BeforeClass
     public static void oneTimeSetUp() {
+    	SDId_Service service = new SDId_Service();
+    	port = service.getSDIdImplPort();
 
     }
 
     @AfterClass
     public static void oneTimeTearDown() {
-
+    	port = null;
     }
 
 
@@ -53,54 +58,46 @@ public class CreateUserTest {
     	// if the assert fails, the test fails
 
     @Test(expected = InvalidUser_Exception.class)
-    public void testSetIdNull() {
-    	user1.setUserId("");    
+    public void testSetIdNull() throws InvalidUser_Exception, EmailAlreadyExists_Exception, InvalidEmail_Exception, UserAlreadyExists_Exception{
+    	
+    	port.createUser("", "a@b");
     }
     @Test(expected = InvalidUser_Exception.class)
-    public void testSetIdInt() {
-    	user1.setUserId("5");    
+    public void testSetIdInt() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
+    	port.createUser("5","a@b");
     }
     
     @Test(expected = InvalidEmail_Exception.class)
-    public void testSetInvalidEmailString() {
-    	user1.setEmailAddress("aloalo");
+    public void testSetInvalidEmailString() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
+    	port.createUser(user, "alo"); 
     }
     @Test(expected = InvalidEmail_Exception.class)
-    public void testSetInvalidEmailName() {
-    	user1.setEmailAddress("@aloalo");
+    public void testSetInvalidEmailName() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
+    	port.createUser(user,"@aloalo");
     }
     
     @Test(expected = InvalidEmail_Exception.class)
-    public void testSetInvalidEmailServer() {
-    	user1.setEmailAddress("aloalo@");
+    public void testSetInvalidEmailServer() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
+    	port.createUser(user,"@aloalo");
     }
     
-    @Test
-    public void testGetId() {
-    	final String id = "alice";
-    	user1.setUserId(id);
-    	assertEquals("alice",user1.getUserId());
-    }
-    
-    @Test
-    public void testGetAddress() {
-    	final String address = "alice@tecnico.ulisboa.pt";
-    	user1.setEmailAddress(address);
-    	assertEquals("alice@tecnico.ulisboa.pt",user1.getEmailAddress());
-    }
-    
+    /*@Test
+    public void testGetId() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
+    	port.createUser(user, address);
+    	assertEquals("duarte",...);
+    	Não sei testar quando dá bem ahah
+    }*/
+  
     @Test(expected = EmailAlreadyExists_Exception.class)
-    public void testSameAddress() {
-    	final String address = "alice@tecnico.ulisboa.pt";
-    	user1.setEmailAddress(address);
-    	user2.setEmailAddress(address);
+    public void testSameAddress() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
+    	port.createUser("carla", address);
+    	port.createUser("duarte",address);
     }
     
     @Test(expected = UserAlreadyExists_Exception.class)
-    public void testSameUserId() {
-    	final String id = "alice";
-    	user1.setUserId(id);
-    	user2.setUserId(id);
+    public void testSameUserId() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
+    	port.createUser(user,"hello@alolo");
+    	port.createUser(user,"bye@aloalo");
     }
     
 }

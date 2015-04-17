@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sdis.id.ws;
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 /**
@@ -9,18 +10,22 @@ import static org.junit.Assert.*;
 public class RequestAuthenticationTest {
 
     // static members
-
+	private static SDId port;
+	private static String id = "duarte";
+	private static String address = "duarte@tecnico.ulisboa.pt";
+	private static byte[] pass = "Dddd4".getBytes();
 
     // one-time initialization and clean-up
 
     @BeforeClass
     public static void oneTimeSetUp() {
-
+    	SDId_Service service = new SDId_Service();
+    	port = service.getSDIdImplPort();
     }
 
     @AfterClass
     public static void oneTimeTearDown() {
-
+    	port = null;
     }
 
 
@@ -47,9 +52,7 @@ public class RequestAuthenticationTest {
 
     @Test
     public void testGetReserved() {
-    	final String id = "duarte";
-    	final String address = "duarte@tecnico.ulisboa.pt";
-    	final byte[] pass = "Dddd4".getBytes();
+    	
     	
     	user.setUserId(id);
     	user.setEmailAddress(address);
@@ -78,22 +81,18 @@ public class RequestAuthenticationTest {
     }
     
     @Test(expected = AuthReqFailed_Exception.class)
-    public void testReqAuthNonExisting() {
-    	ra.setUserId("Gabriel");
+    public void testReqAuthNonExisting() throws AuthReqFailed_Exception {
+    	port.requestAuthentication(id, pass);
     }
     
     @Test(expected = AuthReqFailed_Exception.class)
-    public void testReqAuthWrongPass() {
-    	final String id = "duarte";
-    	final String address = "duarte@tecnico.ulisboa.pt";
-    	final byte[] pass = "Dddd4".getBytes();
+    public void testReqAuthWrongPass() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception, AuthReqFailed_Exception {
+    	
     	final byte[] wrongPass = "GGGGGa5".getBytes();
     	
-    	user.setUserId(id);
-    	user.setEmailAddress(address);
+    	port.createUser(id, address);
     	
-    	ra.setUserId(id);
-    	ra.setReserved(wrongPass);
+    	port.requestAuthentication(id, wrongPass);
     }
     
     

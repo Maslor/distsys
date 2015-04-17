@@ -9,18 +9,22 @@ import static org.junit.Assert.*;
 public class RemoveUserTest {
 
     // static members
-
+	private static SDId port;
+	private static String user = "bruno";
+	private static String address ="bruno@tecnico.ulisboa.pt";
+	
 
     // one-time initialization and clean-up
 
     @BeforeClass
     public static void oneTimeSetUp() {
-
+    	SDId_Service service = new SDId_Service();
+    	port = service.getSDIdImplPort();
     }
 
     @AfterClass
     public static void oneTimeTearDown() {
-
+    	port = null;
     }
 
 
@@ -47,18 +51,17 @@ public class RemoveUserTest {
 
     // tests
 
-    @Test
-    public void testRemoveExisting() {
-    	final String id = "bruno";
-    	user1.setUserId(id);
-    	remove1.setUserId(id);
-    	assertEquals(null,user1.getUserId());	
-    }
+    /*@Test
+    public void testRemoveExisting() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception, UserDoesNotExist_Exception {
+    	
+    	final int a = port.createUser(user,address);
+    	port.removeUser(user);
+    	
+    }*/
     
     @Test(expected = UserDoesNotExist_Exception.class)
-    public void testRemoveNonExisting() {
-    	final String id2 = "carla";
-    	remove2.setUserId(id2);
+    public void testRemoveNonExisting() throws UserDoesNotExist_Exception {
+    	port.removeUser(user);
     }
 
 }
