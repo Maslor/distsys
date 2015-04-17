@@ -54,7 +54,7 @@ mvn exec:java -> runs de program
 
 [1] Execute the Test Client
     cd on your terminal until you get to the "\Projeto_cliente" directory. Then, in order to run the tests, just type the following command:
-   > mvn test    
+   mvn test    
 
 
 
