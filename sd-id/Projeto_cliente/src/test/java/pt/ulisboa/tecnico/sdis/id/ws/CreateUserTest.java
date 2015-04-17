@@ -73,12 +73,14 @@ public class CreateUserTest {
     }
     @Test(expected = InvalidEmail_Exception.class)
     public void testSetInvalidEmailName() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
-    	port.createUser(user,"@aloalo");
+    	final String user1 = "Gabriel";
+    	port.createUser(user1,"@aloalo");
     }
     
     @Test(expected = InvalidEmail_Exception.class)
-    public void testSetInvalidEmailServer() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
-    	port.createUser(user,"@aloalo");
+    public void testInvalidEmailServer() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {
+    	final String user2 = "Diogo";
+    	port.createUser(user2,"aloalo@");
     }
     
     /*@Test
