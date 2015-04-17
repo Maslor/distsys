@@ -14,7 +14,7 @@ Repository:
 
 ## Service SD-ID
 
-## Instalacion instructions
+## Installation instructions
 
 [0] Start Operative system: Windows
 
