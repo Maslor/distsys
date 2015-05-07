@@ -46,7 +46,7 @@ public class RenewPasswordTest {
     
     @Test(expected = UserDoesNotExist_Exception.class)
     public void testRemoveNonExisting() throws UserDoesNotExist_Exception {
-    	final String id = "obligadoooo";
+    	final String id = "carla";
     	port.renewPassword(id);
     }
 
