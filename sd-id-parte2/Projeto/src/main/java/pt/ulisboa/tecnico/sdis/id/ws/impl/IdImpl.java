@@ -1,7 +1,22 @@
 package pt.ulisboa.tecnico.sdis.id.ws.impl;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 import javax.jws.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.security.InvalidKeyException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.HashMap;
+
 import pt.ulisboa.tecnico.sdis.id.ws.*; // classes generated from WSDL
 
 @WebService(
@@ -119,16 +134,87 @@ public class IdImpl implements SDId {
 		throw new UserDoesNotExist_Exception("User does not exist\n", nonexistantUser);
 	}
 
+	
+	
 	public byte[] requestAuthentication(String userId, byte[] reserved)
 			throws AuthReqFailed_Exception {
 		// TODO Auto-generated method stub
-		byte[] authSuccess = {1};
+		
 		String userPass = new String(reserved);
+		
+		
 		for(CreateUser users:registedUsers.keySet()){
 			if (users.getUserId().equals(userId)){
 				if((registedUsers.get(users)).equals(userPass)){
 					System.out.printf("Authentication Successful\n");
-					return authSuccess;
+					
+					/*creating the ticket and all the encrypted data to return*/
+					ByteArrayOutputStream bos = new ByteArrayOutputStream();
+					ObjectOutput out = null;
+					
+					KerberosTicket serviceTicket = new KerberosTicket(userId, "SdStore");
+					String serviceKey = serviceTicket.getServiceKey();
+					byte[] secretKey = serviceKey.getBytes();
+					
+					/*digesting the keys to create keys long enough for use on AES algorithm*/
+					MessageDigest sha;
+					try {
+						sha = MessageDigest.getInstance("SHA-1");
+						secretKey = sha.digest(secretKey);
+						secretKey = Arrays.copyOf(secretKey, 16);
+						reserved = sha.digest(reserved);
+						reserved = Arrays.copyOf(reserved, 16);
+					} catch (NoSuchAlgorithmException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					/*converting the kerberos ticket to byte array for further encryption*/
+					try {
+						  out = new ObjectOutputStream(bos);   
+						  out.writeObject(serviceTicket);						  
+					} catch (IOException ex) {
+						    // ignore close exception
+					}
+					
+					byte[] ticketToEncrypt = bos.toByteArray();
+					
+					/*attempts to cipher the ticket byte array and the data for the client using AES algorithm*/
+					try {
+						Cipher cipher = Cipher.getInstance("AES");
+						Cipher cipherCli = Cipher.getInstance("AES");
+						SecretKeySpec skey = new SecretKeySpec(secretKey, "AES");
+						SecretKeySpec skeyCli = new SecretKeySpec(reserved, "AES");
+						try {
+							cipher.init(Cipher.ENCRYPT_MODE, skey);
+							byte[] encriptedTicket = cipher.doFinal(ticketToEncrypt);
+							cipherCli.init(Cipher.ENCRYPT_MODE, skeyCli);
+							byte[] encriptedDataCli = cipherCli.doFinal(secretKey);
+							byte[] authSuccess = new byte[encriptedDataCli.length + encriptedTicket.length];
+							System.out.printf("tamanho data client %d ---- tamanho ticket %d\n",encriptedDataCli.length, encriptedTicket.length);
+							System.arraycopy(encriptedDataCli, 0, authSuccess, 0, encriptedDataCli.length);
+							System.arraycopy(encriptedTicket, 0, authSuccess, encriptedDataCli.length, encriptedTicket.length);
+							return authSuccess;
+						} catch (InvalidKeyException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IllegalBlockSizeException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (BadPaddingException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					} catch (NoSuchAlgorithmException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (NoSuchPaddingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+					
 				}else{
 					AuthReqFailed authFailed = new AuthReqFailed();
 					authFailed.setReserved(reserved);
