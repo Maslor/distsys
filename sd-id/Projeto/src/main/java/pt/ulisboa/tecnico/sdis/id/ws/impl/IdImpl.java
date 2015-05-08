@@ -38,6 +38,13 @@ public class IdImpl implements SDId {
 			InvalidUser_Exception, UserAlreadyExists_Exception {
 		// TODO Auto-generated method stub
 		
+		/*check if null*/
+		if (emailAddress.equals(null)) {
+			InvalidEmail invalidEmailAddress = new InvalidEmail();
+			invalidEmailAddress.setEmailAddress(emailAddress);
+			throw new InvalidEmail_Exception("Invalid Email, format is a@b\n", invalidEmailAddress);	
+		}
+		
 		/*check if the email is valid */
 		if(emailAddress.contains("@")){
 			String[] emailParts = emailAddress.split("@");
@@ -65,6 +72,13 @@ public class IdImpl implements SDId {
 		
 		/*check if the user is valid*/
 		if(userId.equals(" ") || userId.equals("")){
+			InvalidUser invalidUser = new InvalidUser();
+			invalidUser.setUserId(userId);
+			throw new InvalidUser_Exception("Invalid user, user must not contain spaces or be empty", invalidUser);
+		}
+		
+		/*check if the user is null*/
+		if(userId.equals(null) || userId.equals(null)){
 			InvalidUser invalidUser = new InvalidUser();
 			invalidUser.setUserId(userId);
 			throw new InvalidUser_Exception("Invalid user, user must not contain spaces or be empty", invalidUser);
