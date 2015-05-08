@@ -82,7 +82,7 @@ public class RequestAuthenticationTest {
     
     @Test(expected = AuthReqFailed_Exception.class)
     public void testReqAuthNonExisting() throws AuthReqFailed_Exception {
-    	port.requestAuthentication(id, pass);
+    	port.requestAuthentication("basankdnsdjnakdjnkasjdn", pass);
     }
     
     @Test(expected = AuthReqFailed_Exception.class)
@@ -90,9 +90,9 @@ public class RequestAuthenticationTest {
     	
     	final byte[] wrongPass = "GGGGGa5".getBytes();
     	
-    	port.createUser(id, address);
+    	port.createUser("whatusayintome", "asdsamdjasmdasmdkjas@kdmfjkmaskdjmaskdm");
     	
-    	port.requestAuthentication(id, wrongPass);
+    	port.requestAuthentication("whatusayintome", wrongPass);
     }
     
     
