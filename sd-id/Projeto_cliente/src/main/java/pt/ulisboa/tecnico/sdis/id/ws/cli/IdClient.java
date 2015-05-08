@@ -1,5 +1,6 @@
 package pt.ulisboa.tecnico.sdis.id.ws.cli;
 
+import java.nio.ByteBuffer;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class IdClient {
 	private SDId SdId; 
     private Scanner keyboardSc;
     private String menuOptions = " 1 - Create User\n 2 - Renew Password\n 3 - Remove User\n 4 - Authentication\n 5 - Exit\n";
-
+    private int nonce = 0; /*part 2 proj*/
     
     public IdClient(SDId port){
     	this.SdId = port;
@@ -105,13 +106,19 @@ public class IdClient {
 						
     			case 4: userId = readArgumentUser();
     					pass = readPassword();
+    					nonce += 1;
+    					byte[] nonceByte = ByteBuffer.allocate(4).putInt(nonce).array();
     					byte[] password = pass.getBytes();
+    					byte[] auth = new byte[password.length + nonceByte.length];
+    					System.arraycopy(password, 0, auth, 0, password.length);
+						System.arraycopy(nonceByte, 0, auth, password.length, nonceByte.length);
 						try {
-							SdId.requestAuthentication(userId, password);
+							SdId.requestAuthentication(userId, auth);
 						} catch (AuthReqFailed_Exception e) {
 							// TODO Auto-generated catch block
 							System.out.printf(e.getMessage());
 						}
+						
     					break;
     			
     			case 5:	return;
