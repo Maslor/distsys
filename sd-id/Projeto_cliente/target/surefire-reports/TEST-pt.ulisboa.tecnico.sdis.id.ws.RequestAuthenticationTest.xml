@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="2" failures="0" name="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" time="0.094" errors="2" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_25\jre\bin"/>
+    <property name="java.vm.version" value="25.25-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="PT"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente"/>
+    <property name="java.runtime.version" value="1.8.0_25-b18"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_25\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Gabriel\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 8.1"/>
+    <property name="classworlds.conf" value="C:\Users\Gabriel\Desktop\apache-maven-3.2.5-bin\apache-maven-3.2.5\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_25\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\MATLAB\R2013b\runtime\win64;C:\Program Files\MATLAB\R2013b\bin;C:\Program Files\MATLAB\R2013b\polyspace\bin;C:\Users\Gabriel\Desktop\apache-maven-3.2.5-bin\apache-maven-3.2.5\bin;C:\Users\Gabriel\Desktop\juddi-3.2.1_tomcat-7.0.57_port-8081\juddi-3.2.1_tomcat-7.0.57_port-8081\bin;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.3"/>
+    <property name="user.home" value="C:\Users\Gabriel"/>
+    <property name="user.timezone" value="Europe/London"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Gabriel"/>
+    <property name="java.class.path" value="C:\Users\Gabriel\Desktop\apache-maven-3.2.5-bin\apache-maven-3.2.5\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_25\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="pt"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_25"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_25\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_25\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_25\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_25\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_25\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_25\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_25\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_25\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_25\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp850"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Users\Gabriel\Desktop\apache-maven-3.2.5-bin\apache-maven-3.2.5\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.stdout.encoding" value="cp850"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" name="testReqAuthNonExisting" time="0.059">
+    <error message="Unexpected exception, expected&lt;pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception&gt; but was&lt;com.sun.xml.ws.fault.ServerSOAPFaultException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception&gt; but was&lt;com.sun.xml.ws.fault.ServerSOAPFaultException&gt;
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: com.sun.xml.ws.fault.ServerSOAPFaultException: Client received SOAP Fault from server: 6 &gt; 5 Please see the server log to find more detail regarding exact cause of the failure.
+	at com.sun.xml.ws.fault.SOAP11Fault.getProtocolException(SOAP11Fault.java:193)
+	at com.sun.xml.ws.fault.SOAPFaultBuilder.createException(SOAPFaultBuilder.java:131)
+	at com.sun.xml.ws.client.sei.StubHandler.readResponse(StubHandler.java:253)
+	at com.sun.xml.ws.db.DatabindingImpl.deserializeResponse(DatabindingImpl.java:203)
+	at com.sun.xml.ws.db.DatabindingImpl.deserializeResponse(DatabindingImpl.java:290)
+	at com.sun.xml.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:119)
+	at com.sun.xml.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:92)
+	at com.sun.xml.ws.client.sei.SEIStub.invoke(SEIStub.java:161)
+	at com.sun.proxy.$Proxy49.requestAuthentication(Unknown Source)
+	at pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest.testReqAuthNonExisting(RequestAuthenticationTest.java:85)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:19)
+	... 25 more
+</error>
+    <system-out>RelayClientHandler received &apos;null&apos;
+RelayClientHandler put token &apos;null,client-handler&apos; on request message header
+Outbound SOAP message:
+&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;SOAP-ENV:Header/&gt;&lt;S:Body&gt;&lt;ns2:requestAuthentication xmlns:ns2=&quot;urn:pt:ulisboa:tecnico:sdis:id:ws&quot;&gt;&lt;userId&gt;basankdnsdjnakdjnkasjdn&lt;/userId&gt;&lt;reserved&gt;RGRkZDQ=&lt;/reserved&gt;&lt;/ns2:requestAuthentication&gt;&lt;/S:Body&gt;&lt;/S:Envelope&gt;
+Inbound SOAP message:
+&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;SOAP-ENV:Header/&gt;&lt;S:Body&gt;&lt;S:Fault xmlns:ns4=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;S:Server&lt;/faultcode&gt;&lt;faultstring&gt;6 &amp;gt; 5&lt;/faultstring&gt;&lt;/S:Fault&gt;&lt;/S:Body&gt;&lt;/S:Envelope&gt;
+</system-out>
+  </testcase>
+  <testcase classname="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" name="testReqAuthWrongPass" time="0.035">
+    <error message="Unexpected exception, expected&lt;pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception&gt; but was&lt;com.sun.xml.ws.fault.ServerSOAPFaultException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception&gt; but was&lt;com.sun.xml.ws.fault.ServerSOAPFaultException&gt;
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+Caused by: com.sun.xml.ws.fault.ServerSOAPFaultException: Client received SOAP Fault from server: java.nio.BufferUnderflowException Please see the server log to find more detail regarding exact cause of the failure.
+	at com.sun.xml.ws.fault.SOAP11Fault.getProtocolException(SOAP11Fault.java:193)
+	at com.sun.xml.ws.fault.SOAPFaultBuilder.createException(SOAPFaultBuilder.java:131)
+	at com.sun.xml.ws.client.sei.StubHandler.readResponse(StubHandler.java:253)
+	at com.sun.xml.ws.db.DatabindingImpl.deserializeResponse(DatabindingImpl.java:203)
+	at com.sun.xml.ws.db.DatabindingImpl.deserializeResponse(DatabindingImpl.java:290)
+	at com.sun.xml.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:119)
+	at com.sun.xml.ws.client.sei.SyncMethodHandler.invoke(SyncMethodHandler.java:92)
+	at com.sun.xml.ws.client.sei.SEIStub.invoke(SEIStub.java:161)
+	at com.sun.proxy.$Proxy49.requestAuthentication(Unknown Source)
+	at pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest.testReqAuthWrongPass(RequestAuthenticationTest.java:95)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:19)
+	... 25 more
+</error>
+    <system-out>RelayClientHandler received &apos;null&apos;
+RelayClientHandler put token &apos;null,client-handler&apos; on request message header
+Outbound SOAP message:
+&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;SOAP-ENV:Header/&gt;&lt;S:Body&gt;&lt;ns2:createUser xmlns:ns2=&quot;urn:pt:ulisboa:tecnico:sdis:id:ws&quot;&gt;&lt;userId&gt;whatusayintome&lt;/userId&gt;&lt;emailAddress&gt;asdsamdjasmdasmdkjas@kdmfjkmaskdjmaskdm&lt;/emailAddress&gt;&lt;/ns2:createUser&gt;&lt;/S:Body&gt;&lt;/S:Envelope&gt;
+Inbound SOAP message:
+&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;SOAP-ENV:Header/&gt;&lt;S:Body&gt;&lt;ns2:createUserResponse xmlns:ns2=&quot;urn:pt:ulisboa:tecnico:sdis:id:ws&quot;/&gt;&lt;/S:Body&gt;&lt;/S:Envelope&gt;
+Header element myResponseHeader not found.
+RelayClientHandler received &apos;null&apos;
+RelayClientHandler put token &apos;null,client-handler&apos; on request message header
+Outbound SOAP message:
+&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;SOAP-ENV:Header/&gt;&lt;S:Body&gt;&lt;ns2:requestAuthentication xmlns:ns2=&quot;urn:pt:ulisboa:tecnico:sdis:id:ws&quot;&gt;&lt;userId&gt;whatusayintome&lt;/userId&gt;&lt;reserved&gt;R0dHR0dhNQ==&lt;/reserved&gt;&lt;/ns2:requestAuthentication&gt;&lt;/S:Body&gt;&lt;/S:Envelope&gt;
+Inbound SOAP message:
+&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;SOAP-ENV:Header/&gt;&lt;S:Body&gt;&lt;S:Fault xmlns:ns4=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;S:Server&lt;/faultcode&gt;&lt;faultstring&gt;java.nio.BufferUnderflowException&lt;/faultstring&gt;&lt;/S:Fault&gt;&lt;/S:Body&gt;&lt;/S:Envelope&gt;
+</system-out>
+  </testcase>
+</testsuite>
