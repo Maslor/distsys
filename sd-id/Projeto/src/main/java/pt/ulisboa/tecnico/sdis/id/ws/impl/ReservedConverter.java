@@ -11,11 +11,11 @@ public class ReservedConverter {
 	
 	public ReservedConverter(byte[] reserved){
 		
-		byte[] nonceByte = Arrays.copyOfRange(reserved, 0, 4);
-		byte[] servByte = Arrays.copyOfRange(reserved, 4, reserved.length);
+		byte[] passByte = Arrays.copyOfRange(reserved, 0, 6);
+		byte[] nonceByte = Arrays.copyOfRange(reserved, 6, reserved.length );
 		nonce = ByteBuffer.wrap(nonceByte).getInt();
-		String serv = new String(servByte);
-		service = serv;
+		String password = new String(passByte);
+		userPass = password;
 	}
 	
 	

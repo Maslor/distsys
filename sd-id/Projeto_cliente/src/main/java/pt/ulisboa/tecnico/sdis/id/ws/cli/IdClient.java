@@ -1,40 +1,11 @@
 package pt.ulisboa.tecnico.sdis.id.ws.cli;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.security.InvalidKeyException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
 import javax.xml.ws.*;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.*;
-import org.xml.sax.SAXException;
-
-import static javax.xml.bind.DatatypeConverter.parseBase64Binary;
-import static javax.xml.bind.DatatypeConverter.printBase64Binary;
 import static javax.xml.ws.BindingProvider.ENDPOINT_ADDRESS_PROPERTY;
 import pt.ulisboa.tecnico.sdis.id.ws.uddi.UDDINaming;
 import pt.ulisboa.tecnico.sdis.id.ws.*; // classes generated from WSDL
@@ -46,10 +17,6 @@ public class IdClient {
     private Scanner keyboardSc;
     private String menuOptions = " 1 - Create User\n 2 - Renew Password\n 3 - Remove User\n 4 - Authentication\n 5 - Exit\n";
     private int nonce = 0; /*part 2 proj*/
-    private String servicePassword = "";
-    
-    private byte[] ticket;
-            
     
     public IdClient(SDId port){
     	this.SdId = port;
@@ -85,7 +52,7 @@ public class IdClient {
     
     public String readPassword(){
     	String argument = "";
-        System.out.printf("Write service name: ");
+        System.out.printf("Write password: ");
         argument = keyboardSc.next();
         return argument;
     }
@@ -138,159 +105,25 @@ public class IdClient {
 						break;
 						
     			case 4: userId = readArgumentUser();
-    					String service = readPassword();
-    					String alicePass = "Aaa1";
-    					byte[] alicePassByte = alicePass.getBytes();
-    					String filepath = "/Users/David/Documents/IST/SDis/Projeto_cliente/src/main/resources/ReservedArgs.xml";
-    					Document xmlDocument = null;
+    					pass = readPassword();
     					nonce += 1;
-    					
-    					/*creating a xml with 2 attributes, one for nonce and other for service
-    					 * 
-    					 */
-    					DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-						DocumentBuilder docBuilder = null;
+    					byte[] nonceByte = ByteBuffer.allocate(4).putInt(nonce).array();
+    					byte[] password = pass.getBytes();
+    					byte[] auth = new byte[password.length + nonceByte.length];
+    					System.arraycopy(password, 0, auth, 0, password.length);
+						System.arraycopy(nonceByte, 0, auth, password.length, nonceByte.length);
 						try {
-							docBuilder = docFactory.newDocumentBuilder();
-						} catch (ParserConfigurationException e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
-						try {
-							xmlDocument = docBuilder.parse(filepath);
-						} catch (SAXException e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						} catch (IOException e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
-						
-						
-						/*updating the xml attributes with the nonce and the service*/
-    			        Node header = xmlDocument.getElementsByTagName("header").item(0);
-    			        NodeList xmlAttributes = header.getChildNodes();
-    			        for (int i = 0; i < xmlAttributes.getLength(); i++) {
-    			        	 
-    		                   Node node = xmlAttributes.item(i);
-    		 
-    				   
-    		                   if ("service".equals(node.getNodeName())) {
-    		                	   node.setTextContent(service);
-    		                   }
-    		 
-    		                   
-    		                   if ("nonce".equals(node.getNodeName())) {
-    		                	   node.setTextContent(String.valueOf(nonce));
-    		                   }
-    		 
-    			        }
-    			        
-    			        
-    			        /*updating the xml*/
-    			        TransformerFactory transformerFactoryXML = TransformerFactory.newInstance();
-						Transformer transformerXML = null;
-						try {
-							transformerXML = transformerFactoryXML.newTransformer();
-						} catch (TransformerConfigurationException e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
-    					DOMSource sourceXML = new DOMSource(xmlDocument);
-    					StreamResult resultXML = new StreamResult(new File(filepath));
-						try {
-							transformerXML.transform(sourceXML, resultXML);
-						} catch (TransformerException e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
-    			        
-    			        /*converting the xml to a byte array*/
-    			        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-						Transformer transformer = null;
-						try {
-							transformer = transformerFactory.newTransformer();
-						} catch (TransformerConfigurationException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-		    			        DOMSource source = new DOMSource(xmlDocument);
-		    			        
-		    			        ByteArrayOutputStream bos=new ByteArrayOutputStream();
-		    			        StreamResult result=new StreamResult(bos);
-						try {
-							transformer.transform(source, result);
-						} catch (TransformerException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-    			        byte[] auth=bos.toByteArray();
-   
-    			        
-    			        
-						try {
-							byte[] authSucc = SdId.requestAuthentication(userId, auth);
-							AuthSuccessConv authResponse = new AuthSuccessConv(authSucc);
-							byte[] dataCli = parseBase64Binary(authResponse.getDataCli());
-							ticket = parseBase64Binary(authResponse.getTicket());
-									
-							
-							
-							
-							MessageDigest sha;
-							try {
-								sha = MessageDigest.getInstance("SHA-1");
-								alicePassByte = sha.digest(alicePassByte);
-								alicePassByte = Arrays.copyOf(alicePassByte, 16);
-							} catch (NoSuchAlgorithmException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							
-							try {
-							
-								Cipher cipherCli = Cipher.getInstance("AES/ECB/PKCS5Padding");
-								SecretKeySpec skeyCli = new SecretKeySpec(alicePassByte, "AES");
-								try {
-									cipherCli.init(Cipher.DECRYPT_MODE, skeyCli);
-									byte[] decriptedServiceKey = cipherCli.doFinal(dataCli);
-									
-									byte[] decriptedKey = new byte[6];
-									byte[] decriptedNonceByte = new byte[4];
-									decriptedKey = Arrays.copyOfRange(decriptedServiceKey, 0, 6);
-									decriptedNonceByte =Arrays.copyOfRange(decriptedServiceKey, 6, 10);
-									nonce = ByteBuffer.wrap(decriptedNonceByte).getInt();
-									servicePassword = new String(decriptedKey);
-									System.out.printf("service key is - %s ||| nonce is - %d\n", servicePassword, nonce);
-								} catch (InvalidKeyException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								} catch (IllegalBlockSizeException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								} catch (BadPaddingException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-							} catch (NoSuchAlgorithmException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							} catch (NoSuchPaddingException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							} 
-							
+							SdId.requestAuthentication(userId, auth);
 						} catch (AuthReqFailed_Exception e) {
 							// TODO Auto-generated catch block
 							System.out.printf(e.getMessage());
 						}
-    		
 						
     					break;
     			
     			case 5:	return;
     		}			
-		}
+    	}
     }
 
     
