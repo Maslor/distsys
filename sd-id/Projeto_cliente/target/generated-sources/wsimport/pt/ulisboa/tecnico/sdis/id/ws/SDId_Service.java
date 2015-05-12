@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "SDId", targetNamespace = "urn:pt:ulisboa:tecnico:sdis:id:ws", wsdlLocation = "file:/C:/Users/David/Documents/IST/SDis/Proj1/src/main/resources/SD-ID.1_1.wsdl")
+@WebServiceClient(name = "SDId", targetNamespace = "urn:pt:ulisboa:tecnico:sdis:id:ws", wsdlLocation = "http://localhost:8080/id-ws/endpoint?WSDL")
 public class SDId_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class SDId_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/David/Documents/IST/SDis/Proj1/src/main/resources/SD-ID.1_1.wsdl");
+            url = new URL("http://localhost:8080/id-ws/endpoint?WSDL");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
