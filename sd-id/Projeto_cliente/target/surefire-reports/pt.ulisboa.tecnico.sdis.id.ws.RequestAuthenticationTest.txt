@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.162 sec <<< FAILURE!
-testReqAuthNonExisting(pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest)  Time elapsed: 0.059 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.053 sec <<< FAILURE!
+testReqAuthNonExisting(pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest)  Time elapsed: 0.025 sec  <<< ERROR!
 java.lang.Exception: Unexpected exception, expected<pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception> but was<com.sun.xml.ws.fault.ServerSOAPFaultException>
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
@@ -52,7 +52,7 @@ Caused by: com.sun.xml.ws.fault.ServerSOAPFaultException: Client received SOAP F
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:19)
 	... 25 more
 
-testReqAuthWrongPass(pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest)  Time elapsed: 0.035 sec  <<< ERROR!
+testReqAuthWrongPass(pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest)  Time elapsed: 0.026 sec  <<< ERROR!
 java.lang.Exception: Unexpected exception, expected<pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception> but was<com.sun.xml.ws.fault.ServerSOAPFaultException>
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)

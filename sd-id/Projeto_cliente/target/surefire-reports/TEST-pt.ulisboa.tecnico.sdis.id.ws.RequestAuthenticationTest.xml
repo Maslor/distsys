@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" time="0.094" errors="2" skipped="0">
+<testsuite tests="2" failures="0" name="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" time="0.051" errors="2" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_25\jre\bin"/>
@@ -43,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_25\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean generate-sources package exec:java"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -62,7 +62,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" name="testReqAuthNonExisting" time="0.059">
+  <testcase classname="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" name="testReqAuthNonExisting" time="0.025">
     <error message="Unexpected exception, expected&lt;pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception&gt; but was&lt;com.sun.xml.ws.fault.ServerSOAPFaultException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception&gt; but was&lt;com.sun.xml.ws.fault.ServerSOAPFaultException&gt;
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
@@ -120,7 +120,7 @@ Inbound SOAP message:
 &lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;SOAP-ENV:Header/&gt;&lt;S:Body&gt;&lt;S:Fault xmlns:ns4=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;S:Server&lt;/faultcode&gt;&lt;faultstring&gt;6 &amp;gt; 5&lt;/faultstring&gt;&lt;/S:Fault&gt;&lt;/S:Body&gt;&lt;/S:Envelope&gt;
 </system-out>
   </testcase>
-  <testcase classname="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" name="testReqAuthWrongPass" time="0.035">
+  <testcase classname="pt.ulisboa.tecnico.sdis.id.ws.RequestAuthenticationTest" name="testReqAuthWrongPass" time="0.026">
     <error message="Unexpected exception, expected&lt;pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception&gt; but was&lt;com.sun.xml.ws.fault.ServerSOAPFaultException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;pt.ulisboa.tecnico.sdis.id.ws.AuthReqFailed_Exception&gt; but was&lt;com.sun.xml.ws.fault.ServerSOAPFaultException&gt;
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
