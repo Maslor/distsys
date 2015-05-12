@@ -1,7 +1,6 @@
 
 package pt.ulisboa.tecnico.sdis.id.ws;
 
-import javax.jws.HandlerChain;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -18,7 +17,6 @@ import javax.xml.ws.ResponseWrapper;
  * 
  */
 @WebService(name = "SDId", targetNamespace = "urn:pt:ulisboa:tecnico:sdis:id:ws")
-@HandlerChain(file = "SDId_handler.xml")
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -29,10 +27,10 @@ public interface SDId {
      * 
      * @param emailAddress
      * @param userId
-     * @throws UserAlreadyExists_Exception
      * @throws InvalidEmail_Exception
-     * @throws EmailAlreadyExists_Exception
      * @throws InvalidUser_Exception
+     * @throws UserAlreadyExists_Exception
+     * @throws EmailAlreadyExists_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "createUser", targetNamespace = "urn:pt:ulisboa:tecnico:sdis:id:ws", className = "pt.ulisboa.tecnico.sdis.id.ws.CreateUser")
