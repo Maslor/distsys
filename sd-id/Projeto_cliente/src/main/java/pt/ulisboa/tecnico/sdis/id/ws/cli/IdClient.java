@@ -137,24 +137,10 @@ public class IdClient {
 						}
 						break;
 						
-    			case 4: String cliPass = null;
-    					userId = readArgumentUser();
-    					if(userId.equals("alice")){
-    						cliPass = "Aaa1";
-    					}
-    					if(userId.equals("bruno")){
-    						cliPass = "Bbb2";
-    					}
-    					if(userId.equals("carla")){
-    						cliPass = "Ccc3";
-    					}
-    					if(userId.equals("duarte")){
-    						cliPass = "Ddd4";
-    					}
-    					if(userId.equals("eduardo")){
-    						cliPass = "Eee5";
-    					}
+    			case 4: userId = readArgumentUser();
     					String service = readPassword();
+    					String alicePass = "Aaa1";
+    					byte[] alicePassByte = alicePass.getBytes();
     					String filepath = "/Users/David/Documents/IST/SDis/Projeto_cliente/src/main/resources/ReservedArgs.xml";
     					Document xmlDocument = null;
     					nonce += 1;
@@ -252,11 +238,10 @@ public class IdClient {
 							
 							
 							MessageDigest sha;
-							byte[] cliPassByte = cliPass.getBytes();
 							try {
 								sha = MessageDigest.getInstance("SHA-1");
-								cliPassByte = sha.digest(cliPassByte);
-								cliPassByte = Arrays.copyOf(cliPassByte, 16);
+								alicePassByte = sha.digest(alicePassByte);
+								alicePassByte = Arrays.copyOf(alicePassByte, 16);
 							} catch (NoSuchAlgorithmException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -265,7 +250,7 @@ public class IdClient {
 							try {
 							
 								Cipher cipherCli = Cipher.getInstance("AES/ECB/PKCS5Padding");
-								SecretKeySpec skeyCli = new SecretKeySpec(cliPassByte, "AES");
+								SecretKeySpec skeyCli = new SecretKeySpec(alicePassByte, "AES");
 								try {
 									cipherCli.init(Cipher.DECRYPT_MODE, skeyCli);
 									byte[] decriptedServiceKey = cipherCli.doFinal(dataCli);
