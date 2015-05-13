@@ -3,6 +3,7 @@ pt\ulisboa\tecnico\sdis\id\ws\InvalidEmail_Exception.class
 pt\ulisboa\tecnico\sdis\id\ws\RequestAuthenticationResponse.class
 pt\ulisboa\tecnico\sdis\id\ws\CreateUserResponse.class
 pt\ulisboa\tecnico\sdis\id\ws\impl\IdMain.class
+pt\ulisboa\tecnico\sdis\id\ws\impl\AuthResponse.class
 pt\ulisboa\tecnico\sdis\id\ws\package-info.class
 pt\ulisboa\tecnico\sdis\id\ws\UserAlreadyExists_Exception.class
 pt\ulisboa\tecnico\sdis\id\ws\uddi\UDDINaming.class

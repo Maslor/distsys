@@ -2,7 +2,7 @@ package pt.ulisboa.tecnico.sdis.id.ws;
 
 import org.junit.*;
 
-import pt.ulisboa.tecnico.sdis.id.ws.CreateUser;
+
 import static org.junit.Assert.*;
 
 /**

@@ -4,10 +4,13 @@ C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\targe
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\EmailAlreadyExists_Exception.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\src\main\java\pt\ulisboa\tecnico\sdis\id\ws\cli\IdClient.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\InvalidUser_Exception.java
+C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\src\main\java\pt\ulisboa\tecnico\sdis\id\ws\test\CreateUserTest.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\CreateUser.java
+C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\src\main\java\pt\ulisboa\tecnico\sdis\id\ws\test\RenewPasswordTest.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\InvalidEmail_Exception.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\UserAlreadyExists.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\UserDoesNotExist_Exception.java
+C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\src\main\java\pt\ulisboa\tecnico\sdis\id\ws\cli\AuthSuccessConv.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\InvalidUser.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\RemoveUserResponse.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\src\main\java\pt\ulisboa\tecnico\sdis\id\ws\handler\LoggingHandler.java
@@ -20,6 +23,8 @@ C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\targe
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\UserDoesNotExist.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\RenewPassword.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\SDId_Service.java
+C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\src\main\java\pt\ulisboa\tecnico\sdis\id\ws\test\RemoveUserTest.java
+C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\src\main\java\pt\ulisboa\tecnico\sdis\id\ws\test\RequestAuthenticationTest.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\CreateUserResponse.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\SDId.java
 C:\Users\Gabriel\Documents\GitHub\T_00_00_10-project\sd-id\Projeto_cliente\target\generated-sources\wsimport\pt\ulisboa\tecnico\sdis\id\ws\RequestAuthentication.java
