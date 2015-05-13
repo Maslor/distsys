@@ -28,7 +28,7 @@ public class RelayServerHandler implements SOAPHandler<SOAPMessageContext> {
     public static final String RESPONSE_PROPERTY = "my.response.property";
 
     public static final String REQUEST_HEADER = "myRequestHeader";
-    public static final String REQUEST_NS = "urn:example";
+    public static final String REQUEST_NS = "urn:SDId";
 
     public static final String RESPONSE_HEADER = "myResponseHeader";
     public static final String RESPONSE_NS = REQUEST_NS;

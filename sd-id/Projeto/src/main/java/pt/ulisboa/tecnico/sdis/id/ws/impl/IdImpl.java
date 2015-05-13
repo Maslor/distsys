@@ -27,6 +27,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import pt.ulisboa.tecnico.sdis.id.ws.*; // classes generated from WSDL
+import pt.ulisboa.tecnico.sdis.id.ws.handler.*;
+import javax.annotation.Resource;
 
 @WebService(
 		endpointInterface="pt.ulisboa.tecnico.sdis.id.ws.SDId", 
@@ -36,8 +38,13 @@ import pt.ulisboa.tecnico.sdis.id.ws.*; // classes generated from WSDL
 	    targetNamespace="urn:pt:ulisboa:tecnico:sdis:id:ws",
 	    serviceName="SDId"
 )
+@HandlerChain(file="/handler-chain.xml")
 public class IdImpl implements SDId {
 	
+	public static final String CLASS_NAME = SDId.class.getSimpleName();
+    public static final String TOKEN = "server";
+    
+	@Resource
 	private HashMap<CreateUser, String> registedUsers = new HashMap <CreateUser, String>();
 	private HashMap<String, Integer> usersNonces = new HashMap <String, Integer>();
 	private String storeServiceKeyString = "c25qrx";
@@ -46,6 +53,8 @@ public class IdImpl implements SDId {
 	private String[] baseUsersPass = {"Aaa1", "Bbb2", "Ccc3", "Ddd4", "Eee5"};
 	private String[] baseUsersMail = {"alice@tecnico.pt", "bruno@tecnico.pt", "carla@tecnico.pt", "duarte@tecnico.pt", "eduardo@tecnico.pt"};
 	
+	
+    
 	/* test purposes*/
 	public IdImpl(){
 		for (int i = 0; i < baseUsers.length; i++){

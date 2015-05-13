@@ -3,10 +3,10 @@
 <handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
     <handler-chain>
         <handler>
-            <handler-class>example.ws.handler.RelayServerHandler</handler-class>
+            <handler-class>pt.ulisboa.tecnico.sdis.id.ws.handler.RelayServerHandler</handler-class>
         </handler>
         <handler>
-            <handler-class>example.ws.handler.LoggingHandler</handler-class>
+            <handler-class>pt.ulisboa.tecnico.sdis.id.ws.handler.LoggingHandler</handler-class>
         </handler>
     </handler-chain>
 </handler-chains>
