@@ -3,6 +3,7 @@ package pt.ulisboa.tecnico.sdis.id.ws;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.jws.HandlerChain;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
@@ -18,6 +19,7 @@ import javax.xml.ws.WebServiceFeature;
  * 
  */
 @WebServiceClient(name = "SDId", targetNamespace = "urn:pt:ulisboa:tecnico:sdis:id:ws", wsdlLocation = "http://localhost:8080/id-ws/endpoint?WSDL")
+@HandlerChain(file = "SDId_Service_handler.xml")
 public class SDId_Service
     extends Service
 {
