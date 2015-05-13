@@ -24,7 +24,7 @@ public class IdMain {
 
         try {
             endpoint = Endpoint.create(new IdImpl());
-            
+
             // publish endpoint
             System.out.printf("Starting %s%n", url);
             endpoint.publish(url);
