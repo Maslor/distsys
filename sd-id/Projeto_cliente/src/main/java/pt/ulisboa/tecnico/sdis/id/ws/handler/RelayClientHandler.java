@@ -46,7 +46,7 @@ public class RelayClientHandler implements SOAPHandler<SOAPMessageContext> {
             // *** #2 ***
             // get token from request context
             String propertyValue = (String) smc.get(REQUEST_PROPERTY);
-            System.out.printf("%s received '%s'%n", CLASS_NAME, propertyValue);
+           // System.out.printf("%s received '%s'%n", CLASS_NAME, propertyValue);
 
             // put token in request SOAP header
             try {
@@ -69,10 +69,10 @@ public class RelayClientHandler implements SOAPHandler<SOAPMessageContext> {
                 String newValue = propertyValue + "," + TOKEN;
                 element.addTextNode(newValue);
 
-                System.out.printf("%s put token '%s' on request message header%n", CLASS_NAME, newValue);
+                //System.out.printf("%s put token '%s' on request message header%n", CLASS_NAME, newValue);
 
             } catch (SOAPException e) {
-                System.out.printf("Failed to add SOAP header because of %s%n", e);
+               // System.out.printf("Failed to add SOAP header because of %s%n", e);
             }
 
         } else {
@@ -88,7 +88,7 @@ public class RelayClientHandler implements SOAPHandler<SOAPMessageContext> {
 
                 // check header
                 if (sh == null) {
-                    System.out.println("Header not found.");
+                  //  System.out.println("Header not found.");
                     return true;
                 }
 
@@ -97,7 +97,7 @@ public class RelayClientHandler implements SOAPHandler<SOAPMessageContext> {
                 Iterator it = sh.getChildElements(name);
                 // check header element
                 if (!it.hasNext()) {
-                    System.out.printf("Header element %s not found.%n", RESPONSE_HEADER);
+                   // System.out.printf("Header element %s not found.%n", RESPONSE_HEADER);
                     return true;
                 }
                 SOAPElement element = (SOAPElement) it.next();
@@ -105,18 +105,18 @@ public class RelayClientHandler implements SOAPHandler<SOAPMessageContext> {
                 // *** #10 ***
                 // get header element value
                 String headerValue = element.getValue();
-                System.out.printf("%s got '%s'%n", CLASS_NAME, headerValue);
+               // System.out.printf("%s got '%s'%n", CLASS_NAME, headerValue);
 
                 // *** #11 ***
                 // put token in response context
                 String newValue = headerValue + "," + TOKEN;
-                System.out.printf("%s put token '%s' on response context%n", CLASS_NAME, TOKEN);
+               // System.out.printf("%s put token '%s' on response context%n", CLASS_NAME, TOKEN);
                 smc.put(RESPONSE_PROPERTY, newValue);
                 // set property scope to application so that client class can access property
                 smc.setScope(RESPONSE_PROPERTY, Scope.APPLICATION);
 
             } catch (SOAPException e) {
-                System.out.printf("Failed to get SOAP header because of %s%n", e);
+               // System.out.printf("Failed to get SOAP header because of %s%n", e);
             }
 
         }

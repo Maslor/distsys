@@ -90,7 +90,7 @@ public class IdImpl implements SDId {
 		
 		
 		/*check if the user is valid*/
-		if(userId.equals(" ") || userId.equals("")){
+		if(userId.equals(" ") || userId.equals("") || userId.equals(null)){
 			InvalidUser invalidUser = new InvalidUser();
 			invalidUser.setUserId(userId);
 			throw new InvalidUser_Exception("Invalid user, user must not contain spaces or be empty", invalidUser);
@@ -130,6 +130,13 @@ public class IdImpl implements SDId {
 	public void renewPassword(String userId) throws UserDoesNotExist_Exception {
 		// TODO Auto-generated method stub
 		/*checks if the user exists*/
+		
+		if (userId.equals(null)){
+			UserDoesNotExist nonexistantUser = new UserDoesNotExist();
+			nonexistantUser.setUserId(userId);
+			throw new UserDoesNotExist_Exception("User does not exist\n", nonexistantUser);
+			
+		}
 		for (CreateUser users:registedUsers.keySet()){
 			if(users.getUserId().equals(userId)){
 				PassGenerator newPass = new PassGenerator();
@@ -149,6 +156,13 @@ public class IdImpl implements SDId {
 
 	public void removeUser(String userId) throws UserDoesNotExist_Exception {
 		// TODO Auto-generated method stub
+
+		if(userId.equals(null)){
+			UserDoesNotExist nonexistantUser = new UserDoesNotExist();
+			nonexistantUser.setUserId(userId);
+			throw new UserDoesNotExist_Exception("User does not exist\n", nonexistantUser);
+		}
+		
 		for(CreateUser users:registedUsers.keySet()){
 			if(users.getUserId().equals(userId)){
 				registedUsers.remove(users);
@@ -176,7 +190,7 @@ public class IdImpl implements SDId {
 		int userNonce = 0;
 		String userService = null;
 		
-		if(reserved.equals(null)){
+		if(reserved.equals(null) || userId.equals(null)){
 			AuthReqFailed authFailed = new AuthReqFailed();
 			authFailed.setReserved(reserved);
 			throw new AuthReqFailed_Exception("Authentication Failed, invalid arguments.\n", authFailed);

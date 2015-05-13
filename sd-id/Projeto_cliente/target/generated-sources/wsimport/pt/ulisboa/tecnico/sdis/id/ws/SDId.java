@@ -31,8 +31,8 @@ public interface SDId {
      * @param userId
      * @throws UserAlreadyExists_Exception
      * @throws InvalidEmail_Exception
-     * @throws EmailAlreadyExists_Exception
      * @throws InvalidUser_Exception
+     * @throws EmailAlreadyExists_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "createUser", targetNamespace = "urn:pt:ulisboa:tecnico:sdis:id:ws", className = "pt.ulisboa.tecnico.sdis.id.ws.CreateUser")
