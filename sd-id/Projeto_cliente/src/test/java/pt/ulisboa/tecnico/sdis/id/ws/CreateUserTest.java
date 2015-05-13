@@ -2,7 +2,7 @@ package pt.ulisboa.tecnico.sdis.id.ws;
 
 import org.junit.*;
 
-import pt.ulisboa.tecnico.sdis.id.ws.CreateUser;
+
 import static org.junit.Assert.*;
 
 /**
@@ -58,9 +58,21 @@ public class CreateUserTest {
     	// if the assert fails, the test fails
 
     @Test(expected = InvalidUser_Exception.class)
-    public void testSetIdNull() throws InvalidUser_Exception, EmailAlreadyExists_Exception, InvalidEmail_Exception, UserAlreadyExists_Exception{
+    public void testSetIdEmpty() throws InvalidUser_Exception, EmailAlreadyExists_Exception, InvalidEmail_Exception, UserAlreadyExists_Exception{
     	
     	port.createUser("", "a@b");
+    }
+    
+    @Test(expected = InvalidUser_Exception.class)
+    public void testSetIdEmpty() throws InvalidUser_Exception, EmailAlreadyExists_Exception, InvalidEmail_Exception, UserAlreadyExists_Exception{
+    	
+    	port.createUser(null, "a@b");
+    }
+    
+    @Test(expected = InvalidUser_Exception.class)
+    public void testSetEmailNull() throws InvalidUser_Exception, EmailAlreadyExists_Exception, InvalidEmail_Exception, UserAlreadyExists_Exception{
+    	
+    	port.createUser("sd", null);
     }
     /*@Test(expected = InvalidUser_Exception.class)
     public void testSetIdInt() throws EmailAlreadyExists_Exception, InvalidEmail_Exception, InvalidUser_Exception, UserAlreadyExists_Exception {

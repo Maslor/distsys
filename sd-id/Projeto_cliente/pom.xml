@@ -93,11 +93,6 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-	    <groupId>example</groupId>
-	    <artifactId>ws-handlers</artifactId>
-	    <version>1.0-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 
   <properties>
@@ -129,7 +124,6 @@
           <wsdlUrls>
             <wsdlUrl>${wsdl.url}</wsdlUrl>
           </wsdlUrls>
-         
         </configuration>
         <dependencies>
           <dependency>
@@ -157,7 +151,6 @@
             <argument>${uddi.url}</argument>
             <argument>${ws.name}</argument>
           </arguments>
-          
         </configuration>
       </plugin>
       <plugin>

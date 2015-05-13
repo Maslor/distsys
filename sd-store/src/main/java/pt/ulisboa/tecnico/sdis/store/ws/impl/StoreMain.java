@@ -2,7 +2,7 @@ package pt.ulisboa.tecnico.sdis.store.ws.impl;
 
 import javax.xml.ws.Endpoint;
 
-import example.ws.uddi.UDDINaming;
+import pt.ulisboa.tecnico.sdis.store.ws.uddi.UDDINaming;
 
 public class StoreMain {
 
@@ -17,30 +17,53 @@ public class StoreMain {
         String uddiURL = null;
         String wsName = null;
         String wsURL = null;
+        String wsURL2 = null;
+        String wsURL3 = null;
+        String wsURL4 = null;
         if (args.length == 1) {
             wsURL = args[0];
         } else if (args.length >= 3) {
             uddiURL = args[0];
             wsName = args[1];
             wsURL = args[2];
+            wsURL2 = args[3];
+            wsURL3 = args[4];
+            wsURL4 = args[5];
         }
         String wsTestUrl = wsURL + "/test";
 
         Endpoint endpoint = null;
+        Endpoint endpoint2 = null;
+        Endpoint endpoint3 = null;
+        Endpoint endpoint4 = null;
         Endpoint testEndpoint = null;
 
         UDDINaming uddiNaming = null;
+        UDDINaming uddiNaming2 = null;
+        UDDINaming uddiNaming3 = null;
+        UDDINaming uddiNaming4 = null;
 
         try {
             StoreImpl impl = new StoreImpl();
+            /*StoreImpl impl2 = new StoreImpl();
+            StoreImpl impl3 = new StoreImpl();
+            StoreImpl impl4 = new StoreImpl();*/
+            
+            
             if (System.getProperty("store-ws.test") != null) {
                 System.out.println("Populating test data...");
             }
             endpoint = Endpoint.create(impl);
+            endpoint2 = Endpoint.create(impl);
+            endpoint3 = Endpoint.create(impl);
+            endpoint4 = Endpoint.create(impl);
 
             // publish endpoint
             System.out.printf("Starting %s%n", wsURL);
             endpoint.publish(wsURL);
+            endpoint2.publish(wsURL2);
+            endpoint3.publish(wsURL3);
+            endpoint4.publish(wsURL4);
 
             // publish to UDDI
             if (uddiURL != null) {
@@ -48,6 +71,12 @@ public class StoreMain {
                         uddiURL);
                 uddiNaming = new UDDINaming(uddiURL);
                 uddiNaming.rebind(wsName, wsURL);
+                uddiNaming2 = new UDDINaming(uddiURL);
+                uddiNaming2.rebind(wsName, wsURL2);
+                uddiNaming3 = new UDDINaming(uddiURL);
+                uddiNaming3.rebind(wsName, wsURL3);
+                uddiNaming4 = new UDDINaming(uddiURL);
+                uddiNaming4.rebind(wsName, wsURL4);
             }
 
             if ("true".equalsIgnoreCase(System.getProperty("ws.test"))) {
