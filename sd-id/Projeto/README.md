@@ -52,9 +52,11 @@ mvn exec:java -> runs de program
 ## Test instructions
 (How to verify if all functions are running correctly)
 
-[1] Execute "cliente de testes"
+[1] Execute the Test Client
+    cd on your terminal until you get to the "\Projeto_cliente" directory. Then, in order to run the tests, just type the following command:
+   mvn test    
 
-[2] Execute ...
+
 
 --------------------------------------------------------------------------------------------------
 ** END **
