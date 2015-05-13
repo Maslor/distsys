@@ -64,7 +64,7 @@ public class CreateUserTest {
     }
     
     @Test(expected = InvalidUser_Exception.class)
-    public void testSetIdEmpty() throws InvalidUser_Exception, EmailAlreadyExists_Exception, InvalidEmail_Exception, UserAlreadyExists_Exception{
+    public void testSetIdNull() throws InvalidUser_Exception, EmailAlreadyExists_Exception, InvalidEmail_Exception, UserAlreadyExists_Exception{
     	
     	port.createUser(null, "a@b");
     }
