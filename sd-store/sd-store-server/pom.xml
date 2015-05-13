@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- http://maven.apache.org/pom.html#Quick_Overview -->
+
+    <groupId>pt.ulisboa.tecnico.sdis</groupId>
+    <artifactId>sd-store</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>${project.artifactId}</name>
+
+    <dependencies>
+        <!-- JAX-WS -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.2.10</version>
+        </dependency>
+        <!-- UDDI -->
+        <dependency>
+            <groupId>example</groupId>
+            <artifactId>uddi-naming</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mainclass>pt.ulisboa.tecnico.sdis.store.ws.impl.StoreMain</mainclass>
+
+        <uddi.url>http://localhost:8081</uddi.url>
+        <ws.name>SD-STORE</ws.name>
+        <ws.url>http://localhost:8090/sd-store/endpoint</ws.url>
+        <ws.url2>http://localhost:8091/sd-store/endpoint</ws.url2>
+        <ws.url3>http://localhost:8092/sd-store/endpoint</ws.url3>
+        <ws.url4>http://localhost:8093/sd-store/endpoint</ws.url4>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- https://jax-ws-commons.java.net/jaxws-maven-plugin/wsimport-mojo.html -->
+                    <wsdlDirectory>${basedir}/src/main/resources</wsdlDirectory>
+                    <wsdlFiles>
+                        <wsdlFile>SD-STORE.1_1.wsdl</wsdlFile>
+                    </wsdlFiles>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.sun.xml.ws</groupId>
+                        <artifactId>jaxws-tools</artifactId>
+                        <version>2.2.10</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <killAfter>-1</killAfter><!-- to prevent deprecation warning -->
+                    <mainClass>${mainclass}</mainClass>
+                    <arguments>
+                        <argument>${uddi.url}</argument>
+                        <argument>${ws.name}</argument>
+                        <argument>${ws.url}</argument>
+                        <argument>${ws.url2}</argument>
+                        <argument>${ws.url3}</argument>
+                        <argument>${ws.url4}</argument>
+                    </arguments>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>ws.test</key>
+                            <value>true</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.9</version>
+                <configuration>
+                    <programs>
+                        <program>
+                            <mainClass>${mainclass}</mainClass>
+                            <id>${project.artifactId}</id>
+                        </program>
+                    </programs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
