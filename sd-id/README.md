@@ -43,8 +43,9 @@ ws.name = "SDId"
 uddi.url = "http://localhost:8081"
         
 [5] Construct Client:
-In order to construct the client, do cd.. on your terminal, until you get to the directory "Projeto_cliente". After that, execute the following commands on your terminal:
+In order to construct the client, do cd.. on your terminal, until you get to the directory "Projeto_cliente". Then, don't forget to modify the ReservedArgs.xml filepath that's located in the IdClient according to the referred xml file's location in the machine that's running the client. After that, execute the following commands on your terminal:
 mvn generate-sources -> generates sources according to the wsdl
+mvn compile
 mvn exec:java -> runs de program
 
 --------------------------------------------------------------------------------------------------
@@ -53,8 +54,7 @@ mvn exec:java -> runs de program
 (How to verify if all functions are running correctly)
 
 [1] Execute "cliente de testes"
-
-[2] Execute ...
+        mvn test
 
 --------------------------------------------------------------------------------------------------
 ** END **
