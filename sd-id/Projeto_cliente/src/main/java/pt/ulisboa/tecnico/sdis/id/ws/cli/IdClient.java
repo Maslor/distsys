@@ -141,7 +141,7 @@ public class IdClient {
     					String service = readPassword();
     					String alicePass = "Aaa1";
     					byte[] alicePassByte = alicePass.getBytes();
-    					String filepath = "/Users/David/Documents/IST/SDis/Projeto_cliente/src/main/resources/ReservedArgs.xml";
+    					String filepath = "C:/Users/Gabriel/Documents/GitHub/T_00_00_10-project/sd-id/Projeto_cliente/src/main/resources/ReservedArgs.xml";
     					Document xmlDocument = null;
     					nonce += 1;
     					

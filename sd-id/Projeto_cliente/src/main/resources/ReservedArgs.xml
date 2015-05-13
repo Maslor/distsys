@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><reserved>
     <header>
         <service>sd-store</service>
-        <nonce>2</nonce>
+        <nonce>1</nonce>
 
     </header>
     <body>
