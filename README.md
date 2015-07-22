@@ -1,6 +1,6 @@
-# Bubble Docs
+# distsys
 
-This is the main README file for the Bubble Docs project.
+This is the main README file for the distsys project.
 
 *Further instructions in the sd-id folder*
 
