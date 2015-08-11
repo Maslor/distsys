@@ -1,4 +1,5 @@
-# distsys
+# distsys 
+[![Build Status](https://travis-ci.org/Maslor/distsys.svg)](https://travis-ci.org/Maslor/distsys)
 
 This is the main README file for the distsys project.
 
